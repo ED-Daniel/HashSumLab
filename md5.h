@@ -8,6 +8,7 @@
 #include <cstring>
 #include <iostream>
 #include <fstream>
+#include <vector>
 
 
 // a small class for calculating MD5 hashes of strings or byte arrays
@@ -27,6 +28,7 @@ public:
 
     MD5();
     MD5(const std::string& text);
+    MD5(std::vector<char> text);
     void update(const unsigned char *buf, size_type length);
     void update(const char *buf, size_type length);
     MD5& finalize();
@@ -62,5 +64,6 @@ private:
 };
 
 std::string md5(const std::string str);
+std::string md5(std::vector<char> str);
 
 #endif

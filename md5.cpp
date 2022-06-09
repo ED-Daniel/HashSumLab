@@ -6,6 +6,7 @@
 
 /* system implementation headers */
 #include <cstdio>
+#include <utility>
 
 
 // Constants for MD5Transform routine.
@@ -83,6 +84,15 @@ MD5::MD5(const std::string &text)
 {
     init();
     update(text.c_str(), text.length());
+    finalize();
+}
+
+//////////////////////////////
+
+MD5::MD5(std::vector<char> text)
+{
+    init();
+    update(text.data(), text.size());
     finalize();
 }
 
@@ -328,6 +338,13 @@ std::ostream& operator<<(std::ostream& out, MD5 md5)
 std::string md5(const std::string str)
 {
     MD5 md5 = MD5(str);
+
+    return md5.hexdigest();
+}
+
+std::string md5(std::vector<char> str)
+{
+    MD5 md5 = MD5(std::move(str));
 
     return md5.hexdigest();
 }

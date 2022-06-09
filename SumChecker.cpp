@@ -13,6 +13,7 @@ void SumChecker::AddDifference(const std::string &key, const std::string &hash) 
 }
 
 void SumChecker::OverrideDifferences() {
+    file.read(ini);
     for (const auto & [key, val]: differentHashes) ini["HASHES"][key] = val;
     file.write(ini);
 }
