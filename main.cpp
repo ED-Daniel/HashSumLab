@@ -32,9 +32,6 @@ void printOwner(const CHAR *path);
 
 int main(int argc, char *argv[])
 {
-    std::map<std::string, std::string> newFiles = std::map<std::string, std::string>();
-    std::map<std::string, std::string> differentHashes = std::map<std::string, std::string>();
-
     std::vector<int> commandIndexes = std::vector<int>();
     std::vector<std::string> foundCommands = std::vector<std::string>();
 
@@ -386,8 +383,7 @@ void checkSums(const std::vector<std::string> & checkFilesNames, const algorithm
     }
 }
 
-void demo_perms(fs::perms p)
-{
+void demo_perms(fs::perms p) {
     std::cout << ((p & fs::perms::owner_read) != fs::perms::none ? "r" : "-")
               << ((p & fs::perms::owner_write) != fs::perms::none ? "w" : "-")
               << ((p & fs::perms::owner_exec) != fs::perms::none ? "x" : "-")
